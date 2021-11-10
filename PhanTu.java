@@ -38,7 +38,7 @@ public class PhanTu<T> {
 		} catch (IOException e) {
 			System.out.println("An error");
 		} 
-		//Collections.sort(list);
+		Collections.sort(list);
 		try {
 			FileWriter fileWriter = new FileWriter(output);
 			BufferedWriter buf = new BufferedWriter(fileWriter);
