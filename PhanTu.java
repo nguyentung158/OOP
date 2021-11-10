@@ -1,13 +1,17 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+
+
 
 
 public class PhanTu<T> {
@@ -29,18 +33,23 @@ public class PhanTu<T> {
 				System.out.println(number);
 			}
 			// close file
-			Collections.sort(list);
-			PrintWriter writer = new PrintWriter(output);
-
-		    // write down data
-		    for(int newNumber : list){
-		        writer.println(newNumber);
-		    }
-		    writer.flush();
-		    writer.close();
+			
 			buf.close();
 		} catch (IOException e) {
 			System.out.println("An error");
 		} 
+		Collections.sort(list);
+		try {
+			FileWriter fileWriter = new FileWriter(output);
+			BufferedWriter buf = new BufferedWriter(fileWriter);
+			// write to file from current dictionary
+			for (int word : list) {
+				buf.write(word);
+				buf.newLine();
+			}
+			buf.close();
+		} catch (Exception e) {
+			System.out.println("Something went wrong: " + e);
+		}
 	}
 }
