@@ -22,13 +22,13 @@ public class PhanTu<T> {
 	}
 	
 	public void handleFile(String input, String output) {
-		List<Integer> list = new ArrayList<>();
+		List<String> list = new ArrayList<>();
 		try {
 			FileReader fileReader = new FileReader(input);
 			BufferedReader buf = new BufferedReader(fileReader);
 			//store first value of english word
-			int number;
-			while ((number = buf.read()) != -1) {
+			String number;
+			while ((number = buf.readLine()) != null) {
 				list.add(number);
 				System.out.println(number);
 			}
@@ -38,12 +38,12 @@ public class PhanTu<T> {
 		} catch (IOException e) {
 			System.out.println("An error");
 		} 
-		Collections.sort(list);
+		//Collections.sort(list);
 		try {
 			FileWriter fileWriter = new FileWriter(output);
 			BufferedWriter buf = new BufferedWriter(fileWriter);
 			// write to file from current dictionary
-			for (int word : list) {
+			for (String word : list) {
 				buf.write(word);
 				buf.newLine();
 			}
